@@ -6,20 +6,18 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestExample1(t *testing.T) {
-	s := "abcabcbb"
-	l := findLongestSubstringLength(s)
-	assert.Equal(t, 3, l, "The substring length must be 3.")
-}
-
-func TestExample2(t *testing.T) {
-	s := "bbbbb"
-	l := findLongestSubstringLength(s)
-	assert.Equal(t, 1, l, "The substring length must be 1.")
-}
-
-func TestExample3(t *testing.T) {
-	s := "pwwkew"
-	l := findLongestSubstringLength(s)
-	assert.Equal(t, 3, l, "The substring length must be 3.")
+func Test_LongestSubstringLenght(t *testing.T) {
+	tableTests := []struct {
+		testString string
+		expected   int
+		msg        string
+	}{
+		{"abcabcbb", 3, "The substring length must be 3."},
+		{"bbbbb", 1, "The substring length must be 1."},
+		{"pwwkew", 3, "The substring length must be 3."},
+	}
+	for _, tt := range tableTests {
+		r := findLongestSubstringLength(tt.testString)
+		assert.Equal(t, tt.expected, r, tt.msg)
+	}
 }
